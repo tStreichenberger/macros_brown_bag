@@ -1,7 +1,14 @@
 #![allow(unused)]
 
+use maplit::hashmap;
+
 fn main() {
-    print_new_line!("macros_rule!");
+    let hash_map =
+        hashmap! {
+            "one" => 1,
+            "two" => 2,
+        };
+    print_new_line!("{:#?}", hash_map);
 }
 
 /// Remove boilerplate of having to manually add
@@ -17,6 +24,23 @@ macro_rules! print_new_line {
 pub(crate) use print_new_line;
 
 
+/**
+You can define multiple rules in your macro definition
+```
+fn main() {
+    let x = add_or_ident!(3); // x = 3;
+    let y = add_or_ident!(x, 4); // y = x + 4
+}
+```
+ */
+macro_rules! add_or_ident {
+    ($var:expr) => {
+        $var
+    };
+    ($var:expr, $other:expr) => {
+        $var + $other
+    }
+}
 
 /**
 The hygiene rules for local variables allows you to avoid name collisions in your macros

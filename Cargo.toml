@@ -10,6 +10,7 @@ edition = "2021"
 members = ["my_proc_macro"]
 
 [dependencies]
+maplit = "1.0.2"
 my_proc_macro = { path = "./my_proc_macro" }
 
 
