@@ -1,0 +1,17 @@
+
+
+
+[package]
+name = "my_bin"
+version = "0.1.0"
+edition = "2021"
+
+[workspace]
+members = ["my_proc_macro"]
+
+[dependencies]
+my_proc_macro = { path = "./my_proc_macro" }
+
+
+
+
